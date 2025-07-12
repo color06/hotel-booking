@@ -15,9 +15,13 @@ class BookingDeleteAPIView(generics.DestroyAPIView):
 
 
 class BookingListAPIView(generics.ListAPIView):
+
     serializer_class = BookingSerializer
 
     def get_queryset(self):
         room_id = self.request.query_params.get("room")
-        qs = Booking.objects.all().order_by("date_start")
-        return qs.filter(room_id=room_id) if room_id else qs.none()
+        return (
+            Booking.objects.filter(room_id=room_id).order_by("date_start")
+            if room_id
+            else Booking.objects.none()
+        )

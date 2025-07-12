@@ -7,7 +7,7 @@ class RoomAPIView(generics.ListAPIView):
     queryset = Room.objects.filter(is_published=True)
     serializer_class = RoomListSerializer
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['price', 'created_at']
+    ordering_fields = ["price", "created_at"]
 
 
 class RoomCreateAPIView(generics.CreateAPIView):
@@ -18,13 +18,10 @@ class RoomCreateAPIView(generics.CreateAPIView):
 class RoomUpdateAPIView(generics.UpdateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomDetailSerializer
+    lookup_field = "pk"
 
 
 class RoomDeleteAPIView(generics.DestroyAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomDetailSerializer
-
-
-class RoomDetailAPIView(generics.RetrieveAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomListSerializer
+    lookup_field = "pk"
