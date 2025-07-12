@@ -11,11 +11,10 @@ class BookingCreateAPIView(generics.CreateAPIView):
 class BookingDeleteAPIView(generics.DestroyAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
-    lookup_field = "id"
+    lookup_field = "pk"
 
 
 class BookingListAPIView(generics.ListAPIView):
-
     serializer_class = BookingSerializer
 
     def get_queryset(self):

@@ -9,8 +9,7 @@ class BookingSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if data["date_start"] >= data["date_end"]:
-            raise serializers.ValidationError(
-                "date_start должен быть меньше date_end.")
+            raise serializers.ValidationError("date_start должен быть меньше date_end.")
 
         overlaps = Booking.objects.filter(
             room=data["room"],
@@ -22,5 +21,6 @@ class BookingSerializer(serializers.ModelSerializer):
 
         if overlaps.exists():
             raise serializers.ValidationError(
-                "Номер уже забронирован на выбранные даты.")
+                "Номер уже забронирован на выбранные даты."
+            )
         return data

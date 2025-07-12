@@ -15,6 +15,12 @@ class RoomCreateAPIView(generics.CreateAPIView):
     serializer_class = RoomDetailSerializer
 
 
+class RoomDetailAPIView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomDetailSerializer
+    lookup_field = "pk"
+
+
 class RoomUpdateAPIView(generics.UpdateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomDetailSerializer

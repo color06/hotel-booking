@@ -10,8 +10,7 @@ client = APIClient()
 
 
 def create_room(**kwargs) -> Room:
-    defaults = {"description": "Test room",
-                "price": 1000, "is_published": True}
+    defaults = {"description": "Test room", "price": 1000, "is_published": True}
     defaults.update(kwargs)
     return Room.objects.create(**defaults)
 
@@ -22,8 +21,7 @@ def create_booking(room: Room, ds: str, de: str) -> Booking:
 
 def test_create_room_api():
     url = reverse("room-create")
-    res = client.post(url, {"description": "Std",
-                      "price": 2000, "is_published": True})
+    res = client.post(url, {"description": "Std", "price": 2000, "is_published": True})
     assert res.status_code == 201
     assert Room.objects.count() == 1
     assert res.data["price"] == "2000.00"
