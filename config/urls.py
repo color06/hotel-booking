@@ -15,9 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from rooms.views import RoomAPIView
+from django.urls import path, include
+from rooms.views import RoomAPIView, RoomDetailAPIView, RoomCreateAPIView, RoomUpdateAPIView, RoomDeleteAPIView
+from bookings.views import BookingCreateAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/roomslist/', RoomAPIView.as_view())
+    path('api/v1/roomslist/', RoomAPIView.as_view()),
+    path('api/v1/rooms/create/', RoomCreateAPIView.as_view()),
+    path('api/v1/rooms/<int:pk>/', RoomDetailAPIView.as_view()),
+    path('api/v1/rooms/<int:pk>/update/', RoomUpdateAPIView.as_view()),
+    path('api/v1/rooms/<int:pk>/delete/', RoomDeleteAPIView.as_view()),
+    path('api/v1/bookings/create/', BookingCreateAPIView.as_view()),
+    path('api/v1/bookings/', include('bookings.urls'))
+
+
 ]
