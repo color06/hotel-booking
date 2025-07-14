@@ -24,3 +24,8 @@ class BookingListAPIView(generics.ListAPIView):
             if room_id
             else Booking.objects.none()
         )
+
+
+class BookingDetailAPIView(generics.RetrieveAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer

@@ -1,7 +1,7 @@
 # Hotel-Booking API
 
-Сервис для управления номерами отелей и их бронированиями.  
-Стек — **Django 5 + Django REST Framework + PostgreSQL**.  
+Сервис для управления номерами отелей и их бронированиями.
+Стек — **Django 5 + Django REST Framework + PostgreSQL**.
 API без авторизации, все ответы — JSON.
 
 ---
